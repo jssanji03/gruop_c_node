@@ -16,11 +16,11 @@ class Person {
     }
 }
 
-const p1 = new Person('David', 23);
-
-console.log(p1);
-console.log(''+p1);
-console.log(p1.toJSON());
+// const p1 = new Person('David', 23);
+//
+// console.log(p1);
+// console.log(''+p1);
+// console.log(p1.toJSON());
 
 module.exports = Person;
 

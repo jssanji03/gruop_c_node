@@ -6,21 +6,22 @@ class Person {
     }
 
     toJSON(){
+        console.log('--- toJSON()');
         return JSON.stringify({
             name: this.name,
             age: this.age,
         })
     }
     toString(){
+        console.log('--- toString()');
         return this.toJSON();
     }
 }
 
-// const p1 = new Person('David', 23);
-//
-// console.log(p1);
-// console.log(''+p1);
-// console.log(p1.toJSON());
+console.log('---1');
 
-module.exports = Person;
+module.exports = {
+    Person,
+    f1: a=>a*a,
+};
 

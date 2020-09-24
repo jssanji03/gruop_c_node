@@ -6,6 +6,10 @@ app.get('/', (req, res)=>{
     res.send('<h2>Hola </h2>');
 });
 
+
+
+app.use(express.static(__dirname + '/../public'));
+
 app.use((req, res)=>{
     res
         .type('text/plain')

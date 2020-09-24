@@ -14,6 +14,11 @@ app.get('/json-sales', (req, res)=>{
     // res.json(sales);
     res.render('json-sales', {sales})
 });
+app.get('/json-sales', (req, res)=>{
+    const sales = require(__dirname + '/../data/sales');
+    // res.json(sales);
+    res.render('abc/??', {sales})
+});
 
 
 app.use(express.static(__dirname + '/../public'));

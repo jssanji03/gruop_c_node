@@ -20,6 +20,10 @@ app.get('/json-sales2', (req, res)=>{
     res.render('abc/def/json-sales2', {sales})
 });
 
+app.get('/try-qs', (req, res)=>{
+    res.json(req.query);
+});
+
 
 app.use(express.static(__dirname + '/../public'));
 

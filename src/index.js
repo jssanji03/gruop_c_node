@@ -24,6 +24,11 @@ app.get('/try-qs', (req, res)=>{
     res.json(req.query);
 });
 
+const parser = express.urlencoded({extended: false});
+
+app.post('/try-post', parser, (req, res)=>{
+    res.json(req.body);
+});
 
 app.use(express.static(__dirname + '/../public'));
 

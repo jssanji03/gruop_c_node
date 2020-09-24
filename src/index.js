@@ -4,6 +4,10 @@ const app = express();
 
 app.set('view engine', 'ejs');
 
+app.use( express.urlencoded({extended: false}) );
+app.use( express.json() );
+
+
 app.get('/', (req, res)=>{
     // res.send('<h2>Hola </h2>');
     res.render('home', {name: 'Shinder'});
@@ -24,13 +28,13 @@ app.get('/try-qs', (req, res)=>{
     res.json(req.query);
 });
 
-const parser = express.urlencoded({extended: false});
 
-app.post('/try-post', parser, (req, res)=>{
+
+app.post('/try-post',(req, res)=>{
     res.json(req.body);
 });
 
-app.use(express.static(__dirname + '/../public'));
+app.use( express.static(__dirname + '/../public'));
 
 app.use((req, res )=>{
     res

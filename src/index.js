@@ -14,10 +14,10 @@ app.get('/json-sales', (req, res)=>{
     // res.json(sales);
     res.render('json-sales', {sales})
 });
-app.get('/json-sales', (req, res)=>{
+app.get('/json-sales2', (req, res)=>{
     const sales = require(__dirname + '/../data/sales');
     // res.json(sales);
-    res.render('abc/??', {sales})
+    res.render('abc/def/json-sales2', {sales})
 });
 
 

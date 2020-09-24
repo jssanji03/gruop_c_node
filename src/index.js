@@ -2,8 +2,11 @@ const express = require('express');
 
 const app = express();
 
+app.set('view engine', 'ejs');
+
 app.get('/', (req, res)=>{
-    res.send('<h2>Hola </h2>');
+    // res.send('<h2>Hola </h2>');
+    res.render('home', {name: 'Shinder'});
 });
 
 

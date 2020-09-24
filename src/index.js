@@ -9,6 +9,13 @@ app.get('/', (req, res)=>{
     res.render('home', {name: 'Shinder'});
 });
 
+app.get('/json-sales', (req, res)=>{
+    const sales = require(__dirname + '/../data/sales');
+
+    // res.send(sales.constructor.name)
+
+    res.json(sales);
+});
 
 
 app.use(express.static(__dirname + '/../public'));

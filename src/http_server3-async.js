@@ -25,6 +25,15 @@ const server = http.createServer(async (req, res)=>{
         __dirname + '/../data/headers01.txt',
         JSON.stringify(req.headers)
     );
+
+    const msg1 = await myWriteFile(
+        __dirname + '/../data/test01.txt',
+        'Hello!!!'
+    );
+    const msg2 = await myWriteFile(
+        __dirname + '/../data/test02.txt',
+        '哈囉'
+    );
     res.end(msg);
 });
 

@@ -97,6 +97,14 @@ app.post('/try-upload2', upload2.single('avatar'), (req, res)=> {
     res.json(req.file);
 });
 
+app.get('/my-params1/:action?/:id?', (req, res)=> {
+    res.json(req.params);
+});
+app.get('/my-params2/*?/*?', (req, res)=> {
+    res.json(req.params);
+});
+
+
 app.use( express.static(__dirname + '/../public'));
 
 app.use((req, res )=>{

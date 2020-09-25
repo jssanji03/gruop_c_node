@@ -45,7 +45,33 @@ app.post('/try-post-form',(req, res)=>{
 });
 
 app.post('/try-upload', upload.single('avatar'), (req, res)=>{
-    res.json(req.file);
+    console.log(req.file);
+
+    if(req.file && req.file.originalname){
+        let ext = '';
+
+        switch(req.file.mimetype){
+            case 'image/png':
+            case 'image/jpeg':
+            case 'image/gif':
+
+                fs.rename(
+                    req.file.path,
+                    __dirname + '/../public/img/' + req.file.originalname,
+                    error=>{
+                        return res.json({path: '/img/'+ req.file.originalname});
+                    });
+
+                break;
+            default:
+                fs.unlink(req.file.path, error=>{
+                    return res.json({msg: '不是圖檔'});
+                });
+
+        }
+    } else {
+        return res.json({msg: '沒有上傳檔案'});
+    }
 });
 
 

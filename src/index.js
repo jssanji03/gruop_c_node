@@ -110,6 +110,8 @@ app.get(/^\/m\/09\d{2}-?\d{3}-?\d{3}$/i, (req, res)=> {
     res.send(u);
 });
 
+app.use(require(__dirname + '/routes/admin2'));
+
 app.use( express.static(__dirname + '/../public'));
 
 app.use((req, res )=>{

@@ -10,7 +10,10 @@ app.set('view engine', 'ejs');
 
 app.use( express.urlencoded({extended: false}) );
 app.use( express.json() );
-
+app.use((req, res, next)=>{
+    res.locals.title = '小新牛排店';
+    next();
+})
 
 app.get('/', (req, res)=>{
     // res.send('<h2>Hola </h2>');
@@ -19,6 +22,7 @@ app.get('/', (req, res)=>{
 
 app.get('/json-sales', (req, res)=>{
     const sales = require(__dirname + '/../data/sales');
+    res.locals.title += ' - JSON';
     // res.json(sales);
     res.render('json-sales', {sales})
 });

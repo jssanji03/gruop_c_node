@@ -59,18 +59,27 @@ app.post('/try-upload', upload.single('avatar'), (req, res)=>{
                     req.file.path,
                     __dirname + '/../public/img/' + req.file.originalname,
                     error=>{
-                        return res.json({path: '/img/'+ req.file.originalname});
+                        return res.json({
+                            success: true,
+                            path: '/img/'+ req.file.originalname
+                        });
                     });
 
                 break;
             default:
                 fs.unlink(req.file.path, error=>{
-                    return res.json({msg: '不是圖檔'});
+                    return res.json({
+                        success: false,
+                        msg: '不是圖檔'
+                    });
                 });
 
         }
     } else {
-        return res.json({msg: '沒有上傳檔案'});
+        return res.json({
+            success: false,
+            msg: '沒有上傳檔案'
+        });
     }
 });
 

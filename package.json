@@ -6,7 +6,7 @@
   "scripts": {
     "bn": "nodemon --exec babel-node src/index.js",
     "bn1": "babel-node src/index.js",
-    "pm2:dev": "pm2 start src/index.js --log logs/combined.log --time --watch",
+    "pm2:dev": "pm2 start src/index.js --log logs/combined.log --time",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

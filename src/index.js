@@ -7,6 +7,7 @@ const {v4: uuidv4} = require('uuid');
 const axios = require('axios');
 const session = require('express-session');
 const moment = require('moment-timezone');
+const db = require('./db_connect2');
 const upload = multer({dest: __dirname + '/../tmp_uploads'});
 
 const app = express();
@@ -158,6 +159,14 @@ app.get('/try-moment', (req, res)=>{
         'process.env.DB_NAME': process.env.DB_NAME,
     });
 });
+
+app.get('/try-db', (req, res)=>{
+    db.query('SELECT * FROM address_book LIMIT 2')
+        .then(([results])=>{
+            res.json(results);
+        })
+});
+
 
 app.use( express.static(__dirname + '/../public'));
 

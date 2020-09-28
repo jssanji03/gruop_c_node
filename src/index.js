@@ -6,8 +6,10 @@ const fs = require('fs');
 const {v4: uuidv4} = require('uuid');
 const axios = require('axios');
 const session = require('express-session');
+const MysqlStore = require('express-mysql-session')(session);
 const moment = require('moment-timezone');
 const db = require('./db_connect2');
+const sessionStore = new MysqlStore({}, db);
 const upload = multer({dest: __dirname + '/../tmp_uploads'});
 
 const app = express();
@@ -20,6 +22,7 @@ app.use(session({
     saveUninitialized: false,
     resave: false,
     secret: 'jghdkasskjfks37848kj',
+    store: sessionStore,
     cookie: {
         maxAge: 1200000
     }

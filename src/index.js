@@ -170,6 +170,7 @@ app.get('/try-db', (req, res)=>{
         })
 });
 
+app.use('/address-book', require(__dirname + '/routes/address-book'));
 
 app.use( express.static(__dirname + '/../public'));
 

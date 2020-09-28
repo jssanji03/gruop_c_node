@@ -7,24 +7,7 @@ router.get('/', (req, res)=>{
     res.send('address-book');
 });
 
-/* RESTful API
-    列表
-    /api/ GET
-
-    新增
-    /api/ POST
-
-    呈現單筆
-    /api/:sid GET
-
-    修改單筆
-    /api/:sid PUT
-
-    刪除單筆
-    /api/:sid DELETE
-*/
-
-router.get('/api', async (req, res)=>{
+async function getListData (req) {
     const output = {
         page: 0,
         perPage: 10,
@@ -53,13 +36,34 @@ router.get('/api', async (req, res)=>{
         output.rows = r2;
     }
 
-    res.json(output);
+   return output;
+}
 
+
+/* RESTful API
+    列表
+    /api/ GET
+
+    新增
+    /api/ POST
+
+    呈現單筆
+    /api/:sid GET
+
+    修改單筆
+    /api/:sid PUT
+
+    刪除單筆
+    /api/:sid DELETE
+*/
+
+router.get('/api', async (req, res)=>{
+    res.json(await getListData(req) );
 });
 
-
-router.get('/list', (req, res)=>{
-    res.render('address-book/list');
+router.get('/list', async (req, res)=>{
+    const output = await getListData(req);
+    res.render('address-book/list', output);
 });
 
 /*

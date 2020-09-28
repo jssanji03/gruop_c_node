@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require('express');
 const multer = require('multer');
 const fs = require('fs');
@@ -153,6 +155,7 @@ app.get('/try-moment', (req, res)=>{
         t2a: now.tz('Europe/London').format(fm),
         t3: moment(req.session.cookie.expires).format(fm),
         t3b: moment(req.session.cookie.expires).tz('Asia/Tokyo').format(fm),
+        'process.env.DB_NAME': process.env.DB_NAME,
     });
 });
 

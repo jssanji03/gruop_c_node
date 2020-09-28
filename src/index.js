@@ -8,7 +8,7 @@ const axios = require('axios');
 const session = require('express-session');
 const MysqlStore = require('express-mysql-session')(session);
 const moment = require('moment-timezone');
-const db = require('./db_connect2');
+const db = require(__dirname + '/db_connect2');
 const sessionStore = new MysqlStore({}, db);
 const upload = multer({dest: __dirname + '/../tmp_uploads'});
 

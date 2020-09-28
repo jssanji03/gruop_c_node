@@ -7,6 +7,41 @@ router.get('/', (req, res)=>{
     res.send('address-book');
 });
 
+/* RESTful API
+    列表
+    /api/ GET
+
+    新增
+    /api/ POST
+
+    呈現單筆
+    /api/:sid GET
+
+    修改單筆
+    /api/:sid PUT
+
+    刪除單筆
+    /api/:sid DELETE
+*/
+
+router.get('/api', async (req, res)=>{
+    const output = {
+        page: 1,
+        perPage: 5,
+        totalRows: 0,
+        totalPage: 0,
+        rows: []
+    };
+
+    const [ [ { totalRows } ] ] = await db.query("SELECT COUNT(1) totalRows FROM address_book");
+
+    res.json(totalRows);
+
+});
+
+
+
+
 /*
     列表  /list
         列表呈現 GET
@@ -19,27 +54,7 @@ router.get('/', (req, res)=>{
 
     修改  /del/:sid
         POST
- */
-
-
-/* RESTful API
-    列表
-    / GET
-
-    新增
-    / POST
-
-    呈現單筆
-    /:sid GET
-
-    修改單筆
-    /:sid PUT
-
-    刪除單筆
-    /:sid DELETE
- */
-
-
+*/
 
 
 module.exports = router;

@@ -58,7 +58,9 @@ router.get('/api', async (req, res)=>{
 });
 
 
-
+router.get('/list', (req, res)=>{
+    res.render('address-book/list');
+});
 
 /*
     列表  /list

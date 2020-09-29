@@ -46,4 +46,19 @@
     </div>
 </div>
 <%- include('../parts/scripts') %>
+<script>
+    /*
+    $('table tbody .fa-trash').on('click', function(){
+        $(this).closest('tr').remove();
+    });
+     */
+    document.querySelector('tbody').addEventListener('click', (event)=>{
+        console.log(event.target.className);
+        console.log(event.target.classList);
+        if(event.target.classList.contains('fa-trash')){
+            event.target.closest('tr').remove();
+        }
+    });
+
+</script>
 <%- include('../parts/html-foot') %>

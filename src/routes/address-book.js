@@ -124,8 +124,18 @@ router.get('/list', async (req, res)=>{
 router.get('/add', (req, res)=>{
     res.render('address-book/add');
 });
-router.post('/add', upload.none(), (req, res)=>{
-    res.json(req.body);
+router.post('/add', upload.none(), async (req, res)=>{
+    const data = {...req.body};
+    data.created_at = new Date();
+    const sql = "INSERT INTO `address_book` set ?";
+    const [{affectedRows, insertId}] = await db.query(sql, [ data ]);
+    // [{"fieldCount":0,"affectedRows":1,"insertId":860,"info":"","serverStatus":2,"warningStatus":1},null]
+
+    res.json({
+        success: !!affectedRows,
+        affectedRows,
+        insertId,
+    });
 });
 /*
     列表  /list

@@ -1,5 +1,14 @@
 <%- include('../parts/html-head') %>
 <%- include('../parts/navbar') %>
+<style>
+    table tr:hover {
+        background-color: lightblue;
+    }
+    table tbody .fa-trash {
+        color: red;
+        cursor: pointer;
+    }
+</style>
 <div class="container">
     <div class="row">
         <div class="col"></div>
@@ -7,9 +16,9 @@
     <div class="row">
         <div class="col">
             <table class="table table-striped table-bordered">
-                <!-- `sid`, `name`, `email`, `mobile`, `birthday`, `address` -->
                 <thead>
                 <tr>
+                    <th scope="col"><i class="fas fa-trash"></i></th>
                     <th scope="col">#</th>
                     <th scope="col">name</th>
                     <th scope="col">email</th>
@@ -21,6 +30,7 @@
                 <tbody>
                 <% for(let i of rows){ %>
                 <tr>
+                    <td><i class="fas fa-trash"></i></td>
                     <td><%= i.sid %></td>
                     <td><%= i.name %></td>
                     <td><%= i.email %></td>

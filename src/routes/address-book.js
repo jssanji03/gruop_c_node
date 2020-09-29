@@ -1,6 +1,7 @@
 const express = require('express');
 const moment = require('moment-timezone');
 const db = require(__dirname + '/../db_connect2');
+const upload = require(__dirname + '/../upload-img-module');
 
 const router = express.Router();
 
@@ -123,8 +124,8 @@ router.get('/list', async (req, res)=>{
 router.get('/add', (req, res)=>{
     res.render('address-book/add');
 });
-router.post('/add', (req, res)=>{
-
+router.post('/add', upload.none(), (req, res)=>{
+    res.json(req.body);
 });
 /*
     列表  /list

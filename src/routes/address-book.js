@@ -161,6 +161,9 @@ router.post('/edit/:sid', upload.none(), async (req, res)=>{
     });
 });
 
+router.delete('/del/:sid',  async (req, res)=> {
+    res.json({});
+});
 /*
     列表  /list
         列表呈現 GET
@@ -171,8 +174,8 @@ router.post('/edit/:sid', upload.none(), async (req, res)=>{
     修改  /edit/:sid
         修改的表單呈現 GET, 接收資料 POST
 
-    修改  /del/:sid
-        POST
+    刪除  /del/:sid
+        DELETE
 */
 
 

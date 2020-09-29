@@ -149,11 +149,11 @@ router.get('/edit/:sid', async (req, res)=>{
     results[0].birthday = moment(results[0].birthday).format('YYYY-MM-DD');
     res.render('address-book/edit', results[0]);
 });
-router.post('/edit/:sid', async (req, res)=>{
+router.post('/edit/:sid', upload.none(), async (req, res)=>{
     const data = {...req.body};
     const sql = "UPDATE `address_book` SET ? WHERE `sid`=?";
     const [results] = await db.query(sql, [ data, req.params.sid ]);
-    // [{"fieldCount":0,"affectedRows":1,"insertId":860,"info":"","serverStatus":2,"warningStatus":1},null]
+    // {"fieldCount":0,"affectedRows":1,"insertId":0,"info":"Rows matched: 1  Changed: 0  Warnings: 0","serverStatus":2,"warningStatus":0,"changedRows":0}
 
 
     res.json(results);

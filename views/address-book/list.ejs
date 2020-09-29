@@ -55,6 +55,7 @@
                     <th scope="col">mobile</th>
                     <th scope="col">birthday</th>
                     <th scope="col">address</th>
+                    <td><i class="fas fa-edit"></i></td>
                 </tr>
                 </thead>
                 <tbody>
@@ -67,6 +68,11 @@
                     <td><%= i.mobile %></td>
                     <td><%= i.birthday2 %></td>
                     <td><%= i.address %></td>
+                    <td>
+                        <a href="/address-book/edit/<%= i.sid %>">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                    </td>
                 </tr>
                 <% } %>
                 </tbody>

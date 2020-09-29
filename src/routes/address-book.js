@@ -137,6 +137,20 @@ router.post('/add', upload.none(), async (req, res)=>{
         insertId,
     });
 });
+
+router.get('/edit/:sid', async (req, res)=>{
+    const sql = "SELECT * FROM address_book WHERE sid=?";
+
+    const [results] = await db.query(sql, [req.params.sid]);
+    if(! results.length){
+        return res.redirect('/address-book/list');
+    }
+
+    res.json(results);
+
+    //res.render('address-book/add');
+});
+
 /*
     列表  /list
         列表呈現 GET

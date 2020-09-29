@@ -32,7 +32,8 @@ async function getListData (req) {
             output.page = page;
         }
 
-        if(output.totalPages < 7){
+        // 處理頁碼按鈕
+        if(output.totalPages <= 7){
             for(let i=1; i<=output.totalPages; i++){
                 output.pages.push(i);
             }
@@ -94,6 +95,12 @@ router.get('/list', async (req, res)=>{
     res.render('address-book/list', output);
 });
 
+router.get('/add', (req, res)=>{
+    res.render('address-book/add');
+});
+router.post('/add', (req, res)=>{
+
+});
 /*
     列表  /list
         列表呈現 GET

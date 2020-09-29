@@ -162,7 +162,11 @@ router.post('/edit/:sid', upload.none(), async (req, res)=>{
 });
 
 router.delete('/del/:sid',  async (req, res)=> {
-    res.json({});
+
+    const sql = "DELETE FROM `address_book` WHERE sid=?";
+    const [results] = await db.query(sql, [req.params.sid]);
+
+    res.json(results);
 });
 /*
     列表  /list

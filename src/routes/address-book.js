@@ -146,9 +146,8 @@ router.get('/edit/:sid', async (req, res)=>{
         return res.redirect('/address-book/list');
     }
 
-    res.json(results);
-
-    //res.render('address-book/add');
+    results[0].birthday = moment(results[0].birthday).format('YYYY-MM-DD');
+    res.render('address-book/edit', results[0]);
 });
 
 /*

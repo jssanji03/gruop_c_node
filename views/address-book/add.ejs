@@ -57,7 +57,7 @@
     const $email = document.querySelector('#email');
     const $mobile = document.querySelector('#mobile');
     const r_fields = [$name, $email, $mobile];
-    const infobar = document.querySelector('#infobar');
+    const infobar = $('#infobar');
     const submitBtn = document.querySelector('button[type=submit]');
 
     function checkForm() {
@@ -67,7 +67,7 @@
             el.style.borderColor = '#CCCCCC';
             el.nextElementSibling.innerHTML = '';
         });
-        submitBtn.style.display = 'none';
+        // submitBtn.style.display = 'none';
         // TODO: 檢查資料格式
         if ($name.value.length < 2) {
             isPass = false;
@@ -98,23 +98,21 @@
                 .then(obj => {
                     console.log(obj);
                     if (obj.success) {
-                        infobar.innerHTML = '新增成功';
-                        infobar.className = "alert alert-success";
-                        // if(infobar.classList.contains('alert-danger')){
-                        //     infobar.classList.replace('alert-danger', 'alert-success')
-                        // }
-                        setTimeout(() => {
-                            location.href = 'data-list.php';
-                        }, 3000)
+                        infobar.html('新增成功');
+                        infobar.removeClass('alert-danger').addClass('alert-success');
+                        // setTimeout(() => {
+                        //     location.href = 'data-list.php';
+                        // }, 3000)
                     } else {
-                        infobar.innerHTML = obj.error || '新增失敗';
-                        infobar.className = "alert alert-danger";
-                        // if(infobar.classList.contains('alert-success')){
-                        //     infobar.classList.replace('alert-success', 'alert-danger')
-                        // }
+                        infobar.html(obj.error || '新增失敗');
+                        infobar.removeClass('alert-success').addClass('alert-danger');
+
                         submitBtn.style.display = 'block';
                     }
-                    infobar.style.display = 'block';
+                    infobar.slideDown();
+                    setTimeout(() => {
+                        infobar.slideUp();
+                    }, 3000)
                 });
 
         } else {

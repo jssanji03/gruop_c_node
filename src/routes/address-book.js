@@ -1,5 +1,6 @@
 const express = require('express');
 const moment = require('moment-timezone');
+const jwt = require('jsonwebtoken');
 const db = require(__dirname + '/../db_connect2');
 const upload = require(__dirname + '/../upload-img-module');
 

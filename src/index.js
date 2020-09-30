@@ -19,7 +19,14 @@ app.set('view engine', 'ejs');
 
 app.use( express.urlencoded({extended: false}) );
 app.use( express.json() );
-app.use(cors());
+const corsOptions = {
+    credentials: true,
+    origin: function(origin, cb){
+        console.log(`origin: ${origin}`);
+        cb(null, true);
+    }
+};
+app.use(cors(corsOptions));
 app.use(session({
     saveUninitialized: false,
     resave: false,

@@ -6,8 +6,21 @@ const upload = require(__dirname + '/../upload-img-module');
 const router = express.Router();
 
 router.get('/', (req, res)=>{
-    res.send('address-book');
+    res.redirect('/address-book/list');
 });
+
+router.get('/login',async (req, res)=>{
+    res.render('address-book/login');
+});
+router.post('/login',async (req, res)=>{
+
+})
+router.get('/logout',async (req, res)=>{
+    delete req.session.admin;
+    res.redirect('/address-book/list');
+})
+
+
 
 async function getListData (req) {
     const output = {

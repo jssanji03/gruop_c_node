@@ -141,7 +141,11 @@ router.get('/api', async (req, res)=>{
 
 router.get('/list', async (req, res)=>{
     const output = await getListData(req);
-    res.render('address-book/list', output);
+    if(req.session.admin){
+        res.render('address-book/list', output);
+    } else {
+        res.render('address-book/list-noadmin', output);
+    }
 });
 
 router.get('/add', (req, res)=>{

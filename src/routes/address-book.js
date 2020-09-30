@@ -12,7 +12,7 @@ router.get('/', (req, res)=>{
 router.get('/login', (req, res)=>{
     res.render('address-book/login');
 });
-router.post('/login',upload.none(), async (req, res)=>{
+router.post('/login', async (req, res)=>{
     const output = {
         body: req.body,
         success: false,

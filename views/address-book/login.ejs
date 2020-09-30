@@ -83,6 +83,7 @@
                 .then(obj => {
                     console.log(obj);
                     if (obj.success) {
+                        localStorage.setItem('jwtTest', JSON.stringify(obj));
                         location.href = '/address-book/list';
                     } else {
                         infobar.html(obj.error || '帳號或密碼錯誤');

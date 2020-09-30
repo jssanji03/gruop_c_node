@@ -42,6 +42,8 @@ router.post('/login', async (req, res)=>{
     if(rs.length){
         req.session.admin = rs[0];
         output.success = true;
+
+        output.token = jwt.sign({...rs[0]}, process.env.TOKEN_SECRET);
     }
     res.json(output);
 })

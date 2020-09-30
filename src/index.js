@@ -8,6 +8,7 @@ const axios = require('axios');
 const session = require('express-session');
 const MysqlStore = require('express-mysql-session')(session);
 const moment = require('moment-timezone');
+const cors = require('cors');
 const db = require(__dirname + '/db_connect2');
 const sessionStore = new MysqlStore({}, db);
 const upload = multer({dest: __dirname + '/../tmp_uploads'});
@@ -18,7 +19,7 @@ app.set('view engine', 'ejs');
 
 app.use( express.urlencoded({extended: false}) );
 app.use( express.json() );
-app.use(require('cors')());
+app.use(cors());
 app.use(session({
     saveUninitialized: false,
     resave: false,

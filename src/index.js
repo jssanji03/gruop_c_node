@@ -18,6 +18,7 @@ app.set('view engine', 'ejs');
 
 app.use( express.urlencoded({extended: false}) );
 app.use( express.json() );
+app.use(require('cors')());
 app.use(session({
     saveUninitialized: false,
     resave: false,

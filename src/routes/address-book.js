@@ -7,7 +7,7 @@ const upload = require(__dirname + '/../upload-img-module');
 const router = express.Router();
 
 router.use((req, res, next)=>{
-    const whiteList = ['list', 'login'];
+    const whiteList = ['list', 'login', 'verify'];
 
     let u = req.url.split('?')[0];
     u = u.split('/');
@@ -52,6 +52,16 @@ router.get('/logout', (req, res)=>{
     res.redirect('/address-book/list');
 })
 
+router.post('/verify', (req, res)=>{
+    // req.body.token
+    jwt.verify(req.body.token, process.env.TOKEN_SECRET, function(error, payload){
+        if(error){
+            res.json({error: error});
+        } else {
+            res.json(payload);
+        }
+    });
+})
 
 
 async function getListData (req) {

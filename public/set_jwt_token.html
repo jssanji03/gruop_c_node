@@ -6,6 +6,8 @@
 </head>
 <body>
 <button onclick="send()">send token</button>
+<br>
+<button onclick="send2()">send</button>
 
 
 <script>
@@ -25,6 +27,13 @@
         })
     }
 
+    function send2(){
+        fetch('/address-book/verify2')
+            .then(r=>r.json())
+            .then(obj=>{
+                console.log(obj);
+            })
+    }
 
 
 

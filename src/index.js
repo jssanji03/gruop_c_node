@@ -5,6 +5,7 @@ const multer = require('multer');
 const fs = require('fs');
 const {v4: uuidv4} = require('uuid');
 const axios = require('axios');
+const jwt = require('jsonwebtoken');
 const session = require('express-session');
 const MysqlStore = require('express-mysql-session')(session);
 const moment = require('moment-timezone');
@@ -37,8 +38,21 @@ app.use(session({
     }
 }));
 app.use((req, res, next)=>{
-    res.locals.title = '小新牛排店';
+    res.locals.title = '小新購物網';
     res.locals.sess = req.session;
+
+    let auth = req.get('Authorization');
+
+    if(auth && auth.indexOf('Bearer ')===0){
+        auth = auth.slice(7);
+        jwt.verify(auth, process.env.TOKEN_SECRET, function(error, payload){
+            if(!error){
+                req.bearer = payload;
+            }
+            return next();
+        });
+    }
+
     next();
 })
 

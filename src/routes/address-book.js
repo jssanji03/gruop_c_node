@@ -7,7 +7,7 @@ const upload = require(__dirname + '/../upload-img-module');
 const router = express.Router();
 
 router.use((req, res, next)=>{
-    const whiteList = ['list', 'login', 'verify'];
+    const whiteList = ['list', 'login', 'verify', 'verify2'];
 
     let u = req.url.split('?')[0];
     u = u.split('/');
@@ -62,7 +62,20 @@ router.post('/verify', (req, res)=>{
         }
     });
 })
+router.get('/verify2', (req, res)=>{
 
+    const auth = req.get('Authorization');
+
+    res.json({ auth });
+    // req.body.token
+    // jwt.verify(req.body.token, process.env.TOKEN_SECRET, function(error, payload){
+    //     if(error){
+    //         res.json({error: error});
+    //     } else {
+    //         res.json(payload);
+    //     }
+    // });
+})
 
 async function getListData (req) {
     const output = {

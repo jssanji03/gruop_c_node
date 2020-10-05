@@ -49,11 +49,11 @@ app.use((req, res, next)=>{
             if(!error){
                 req.bearer = payload;
             }
-            return next();
+            next();
         });
+    } else {
+        next();
     }
-
-    next();
 })
 
 app.get('/', (req, res)=>{

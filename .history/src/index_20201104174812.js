@@ -7,8 +7,8 @@ app.use( express.json() );
 
 
 
-// app.use( express.static,require(__dirname + '/public'));
-// app.use( '/login-api',require(__dirname + '/src/Cha/cha'));
+app.use( express.static,require(__dirname + '/public'));
+app.use( '/login-api',require(__dirname + '/src/Cha/cha'));
 
 
 

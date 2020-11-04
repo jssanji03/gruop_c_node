@@ -1,4 +1,6 @@
-const express = require('express');
+const express = require('express');  //引入 express
+
+// // 建立 web server 物件
 const app = express();
 
 app.use( express.urlencoded({extended: false}));
@@ -7,7 +9,14 @@ app.use( express.json() );
 
 
 
+
+
+
 // app.use( express.static,require(__dirname + '/public'));
+// app.use( '/login-api',require(__dirname + '/src/Cha/cha'));
+// app.use( '/login-api',require(__dirname + '/src/Cha/cha'));
+// app.use( '/login-api',require(__dirname + '/src/Cha/cha'));
+// app.use( '/login-api',require(__dirname + '/src/Cha/cha'));
 // app.use( '/login-api',require(__dirname + '/src/Cha/cha'));
 
 
